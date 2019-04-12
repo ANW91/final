@@ -8,7 +8,7 @@
 #define FONA_RX 2
 #define FONA_TX 3
 #define FONA_RST 4
-#define TRACKER_ID 2
+#define TRACKER_ID 1
 
 // this is a large buffer for replies
 char replybuffer[255];
@@ -191,7 +191,7 @@ void post(float lat, float lon, float speed_kph, uint16_t volt, int accelx, int 
         uint16_t statuscode;
         int16_t length;
         char url[80] = "http://dmgilmour.herokuapp.com/data";
-        char data[80], latS[12], lonS[12];
+        char data[120], latS[12], lonS[12];
         String latT, lonT, voltT, idT, movingT, temp, conT;
         boolean moving = (speed_kph > 6 || accelx > 20000 || accelx < -20000 || accely > 20000 || accely < -20000);
         int id = TRACKER_ID;
@@ -215,6 +215,7 @@ void post(float lat, float lon, float speed_kph, uint16_t volt, int accelx, int 
         //Serial.print("movingT: ");Serial.println(movingT);
         //Serial.print("voltT: ");Serial.println(voltT);
         temp = "{\"lat\":\""+lonT+"\",\"lon\":\""+latT+"\",\"id\":\""+idT+"\",\"moving\":\""+movingT+"\",\"battery\":\""+voltT+"\",\"con\":\""+conT+"\"}"; 
+        //temp = "{\"lat\":\""+lonT+"\",\"lon\":\""+latT+"\",\"id\":\""+idT+"\",\"moving\":\""+movingT+"\",\"battery\":\""+voltT+"\"}";
         //Serial.println(url);
         //Serial.println(temp);
         temp.toCharArray(data, 80);
