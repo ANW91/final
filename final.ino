@@ -218,7 +218,7 @@ void post(float lat, float lon, float speed_kph, uint16_t volt, int accelx, int 
         //temp = "{\"lat\":\""+lonT+"\",\"lon\":\""+latT+"\",\"id\":\""+idT+"\",\"moving\":\""+movingT+"\",\"battery\":\""+voltT+"\"}";
         //Serial.println(url);
         //Serial.println(temp);
-        temp.toCharArray(data, 80);
+        temp.toCharArray(data, 120);
         Serial.print("data: ");Serial.println(data);
 
         //Serial.println(F("****"));
